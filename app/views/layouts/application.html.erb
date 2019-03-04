@@ -9,6 +9,20 @@
   </head>
 
   <body>
+    <header>
+      <%= if logged_in? %>
+        <%= link_to 'logout', '/signout' %>
+      <%= else %>
+        <%= link_to 'Twitter Login', 'auth/twitter' %>
+      <%= end %>
+    </header>
+
+    <%= if flash[:notice] %>
+      <div class="notice">
+        <%= flash[:notice] %>
+      </div>
+    <%= end %>
+
     <%= yield %>
   </body>
 </html>
