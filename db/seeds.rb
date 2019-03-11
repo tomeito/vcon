@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+csv_answer = CSV.read('app/assets/form_answer.csv', headers: true)
+
+csv_answer.each do |data|
+  user = EntryUser.find_or_initialize_by(name: "#{data['参加キャラクター名']}")
+  if user.new_record?
+    user.save!
+
+  end
+end
