@@ -57,3 +57,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
+gem 'google_drive'
