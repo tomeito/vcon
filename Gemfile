@@ -59,3 +59,4 @@ gem 'omniauth-twitter'
 gem 'dotenv-rails'
 gem 'google_drive'
 gem 'slack-notifier'
+gem 'whenever', require: false

@@ -1,17 +1,15 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
 
+notifier = Slack::Notifier.new(ENV["WEBHOOK_URL"])
 csv_answer = CSV.read('app/assets/form_answer.csv', headers: true)
 
 csv_answer.each do |data|
-  user = EntryUser.find_or_initialize_by(name: "#{data['参加キャラクター名']}")
+  user = EntryUser.find_or_initialize_by(name: "#{data['参加キャラクター名']}",
+                                         description: "#{data['キャラクターのプロフィール(60文字程度でお願いします。)']},
+                                         producer_id: #{Producer.where(name: data['制作者の個人名・団体名'])}")
   if user.new_record?
     user.save!
-
+    # notifier.ping("新しい参加者だよ！\n名前:#{user.name}\n")
+    p "新しい参加者だよ！\n名前:#{user.name}"
   end
 end
