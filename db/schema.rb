@@ -10,6 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20190316113432) do
+
+  create_table "entry_users", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.text "comments"
+    t.string "twitter_url"
+    t.string "youtube_channel"
+    t.string "other_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
