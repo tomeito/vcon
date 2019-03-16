@@ -10,32 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190315133204) do
-
-  create_table "entry_users", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "producer_id"
-    t.index ["producer_id"], name: "index_entry_users_on_producer_id"
-  end
-
-  create_table "producers", force: :cascade do |t|
-    t.string "name"
-    t.text "comments"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "contact"
-  end
-
-  create_table "vote_users", force: :cascade do |t|
-    t.string "uid"
-    t.string "name"
-    t.string "image_url"
-    t.datetime "voted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end
