@@ -16,6 +16,18 @@ csv_answer.each do |data|
           other_url: "#{data['その他SNSなどのリンク']}"
     )
     notifier.ping("新しい参加者だよ！\n名前:#{user.name}\n")
-    p "新しい参加者だよ！\n名前:#{user.name}"
+    puts "新しい参加者だよ！\n名前:#{user.name}"
   end
+
+  form_images = data['スナップ写真4枚(全身が見えるものを一枚以上)'].split(',')
+  main_image = Image.find_or_initialize_by(url: "#{form_images.first}")
+  if main_image.new_record?
+    main_image.update_attribute(
+                url: main_image,
+      entry_user_id: EntryUser.find_by(name: "#{data['参加キャラクター名']}").id,
+       is_top_image: true
+    )
+  end
+  form_images.shift
+
 end
