@@ -1,4 +1,4 @@
-class VoteUserController < ApplicationController
+class VoteUsersController < ApplicationController
 
   def update
     if authenticate
