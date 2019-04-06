@@ -6,7 +6,7 @@ class VoteUserController < ApplicationController
       @current_user.voted_at = Time.now
       @current_user.save
       @vote = Vote.new(vote_user_id: "#{@current_user.id}", entry_user_id: "#{params[:entry_user_id]}")
-
+      @vote.save
     end
   end
 
