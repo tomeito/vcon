@@ -1,0 +1,42 @@
+<body>
+  <div class="container">
+    <h1>バーチャルミスコンテストエントリー一覧</h1>
+    <div id="candidates">
+      <% @entry_users.each do |entryUser| %>
+        <div class="profile-thumbnail" data-candidate="<%= entryUser.id %>">
+            <%= image_tag entryUser.top_image.url %>
+            <p class="name"><%= entryUser.name %></p>
+        </div>
+      <% end %>
+    </div>
+    <% @entry_users.each do |entryUser| %>
+      <div class="overlay" data-id="<%= entryUser.id %>" style="display: none">
+        <div class="window">
+          <div class="upper">
+            <div class="main-image-container"><%= image_tag entryUser.top_image.url %></div>
+          </div>
+          <div class="name_and_profile">
+            <div class="name"><%= entryUser.name %></div>
+            <div class="profile"><%= entryUser.comments %></div>
+          </div>
+          <div class="photos">
+            <% entryUser.other_images.each do |image| %>
+              <%= image_tag image.url %>
+            <% end %>
+          </div>
+          <div class="links">
+            <%= link_to entryUser.youtube_channel do %>
+              <%#= image_path "youtube_link_path" %>
+            <% end %>
+            <%= link_to entryUser.twitter_url do %>
+              <%#= image_path "twitter_link_path" %>
+            <% end %>
+            <%= link_to entryUser.other_url do %>
+              <%#= image_path "other_link_path" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</body>

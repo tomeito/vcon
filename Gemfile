@@ -60,3 +60,7 @@ gem 'dotenv-rails'
 gem 'google_drive'
 gem 'slack-notifier'
 gem 'whenever', require: false
+
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'jquery-turbolinks'
