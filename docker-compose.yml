@@ -1,0 +1,34 @@
+version: '2'
+services:
+  vcon-web:
+    container_name: vcon-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - APP_HOME=/vcon
+    environment:
+      TZ: Asia/Tokyo
+      RAILS_ENV: development
+      DATABASE_URL: 'mysql2://root:toy_labo_vcon_2019@vcon-db:3306'
+      TWITTER_API_KEY: 'BrcLC7MU3aLflkl7kAByMWxrc'
+      TWITTER_API_SECRET: 'J0MuCnIS9snaE0sCPRlmfrKdAr2OJI91YtpRLOpGiKnZQnr7CP'
+      WEBHOOK_URL: 'https://hooks.slack.com/services/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'
+    command: rails s -p 3000 -b 0.0.0.0
+    volumes:
+      - .:/vcon
+    ports:
+      - "3000:3000"
+    links:
+      - vcon-db
+    depends_on:
+      - vcon-db
+  vcon-db:
+    container_name: vcon-db
+    image: mysql:8.0.15
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --default_authentication_plugin=mysql_native_password
+    environment:
+      TZ: Asia/Tokyo
+      MYSQL_ROOT_PASSWORD: toy_labo_vcon_2019
+    ports:
+      - "3307:3306"

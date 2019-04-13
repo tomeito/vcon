@@ -10,6 +10,7 @@ end
 gem 'rails', '~> 5.1.6', '>= 5.1.6.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.3.11'
+gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -60,3 +61,6 @@ gem 'dotenv-rails'
 gem 'google_drive'
 gem 'slack-notifier'
 gem 'whenever', require: false
+
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
