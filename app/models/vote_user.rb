@@ -11,4 +11,11 @@ class VoteUser < ApplicationRecord
       user.image_url = image_url
     end
   end
+
+  def update_vote_date(user)
+    user.voted_at = Time.now
+    user.save
+  end
+
+
 end
