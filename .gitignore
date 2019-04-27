@@ -26,3 +26,4 @@
 /.env
 /.idea
 /config.json
+/app/assets/form_answer.csv

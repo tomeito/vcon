@@ -19,14 +19,13 @@ csv_answer.each do |data|
     puts "新しい参加者だよ！\n名前:#{user.name}"
   end
 
-  # p data['スナップ写真4枚(全身が見えるものを一枚以上)']
   form_images = data['スナップ写真4枚(全身が見えるものを一枚以上)'].gsub(' ','').split(',')
   main_image = Image.find_or_initialize_by(url: form_images.first)
   if main_image.new_record?
     main_image.update_attributes(
-                url: form_images.first.sub('open?','uc?export=view&'),
-      entry_user_id: EntryUser.find_by(name: data['参加キャラクター名']).id,
-       is_top_image: true
+        url: form_images.first.sub('open?','uc?export=view&'),
+        entry_user_id: EntryUser.find_by(name: data['参加キャラクター名']).id,
+        is_top_image: true
     )
   end
   form_images.shift
@@ -35,10 +34,11 @@ csv_answer.each do |data|
     sub_image = Image.find_or_initialize_by(url: form_image)
     if sub_image.new_record?
       sub_image.update_attributes(
-                  url: form_image.sub('open?','uc?export=view&'),
-        entry_user_id: EntryUser.find_by(name: data['参加キャラクター名']).id,
-         is_top_image: false
+          url: form_image.sub('open?','uc?export=view&'),
+          entry_user_id: EntryUser.find_by(name: data['参加キャラクター名']).id,
+          is_top_image: false
       )
     end
   end
+
 end
