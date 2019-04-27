@@ -3,11 +3,24 @@ class EntryUser < ApplicationRecord
   has_many :votes
   has_many :images
 
+  def images
+    images = []
+    (0..3).each do |i|
+      images.push image_path(i)
+    end
+    images
+  end
+
   def top_image
-    Image.where(entry_user_id: self.id).find_by(is_top_image: true)
+    images[0]
   end
 
   def other_images
-    Image.where(entry_user_id: self.id).where(is_top_image: false)
+    images[1..-1]
+  end
+
+  private
+  def image_path(num)
+    name + "/" + (num + 1).to_s + ".jpg"
   end
 end

@@ -4,24 +4,24 @@
     <div id="candidates">
       <% @entry_users.each do |entryUser| %>
         <div class="profile-thumbnail" data-candidate="<%= entryUser.id %>">
-            <%= image_tag entryUser.top_image.url %>
+            <%= image_tag entryUser.images[0] %>
             <p class="name"><%= entryUser.name %></p>
         </div>
       <% end %>
     </div>
     <% @entry_users.each do |entryUser| %>
-      <div class="overlay" data-id="<%= entryUser.id %>" style="display: none">
-        <div class="window">
+      <div class="overlay <%= entryUser.id %>" style="display: none">
+        <div class="window <%= "#{entryUser.id}" %>">
           <div class="upper">
-            <div class="main-image-container"><%= image_tag entryUser.top_image.url %></div>
-          </div>
-          <div class="name_and_profile">
-            <div class="name"><%= entryUser.name %></div>
-            <div class="profile"><%= entryUser.comments %></div>
+            <div class="main-image-container"><%= image_tag entryUser.top_image %></div>
+            <div class="name_and_profile">
+              <div class="name"><span class="nameText"><%= entryUser.name %></span><span class="nameBg"></span></div>
+              <div class="profile"><%= entryUser.description %></div>
+            </div>
           </div>
           <div class="photos">
             <% entryUser.other_images.each do |image| %>
-              <%= image_tag image.url %>
+              <%= image_tag image %>
             <% end %>
           </div>
           <div class="links">
