@@ -109,6 +109,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    json (2.2.0)
     jwt (2.1.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -176,6 +177,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    recaptcha (4.14.0)
+      json
     representable (3.0.4)
       declarative (< 0.1.0)
       declarative-option (< 0.2.0)
@@ -266,6 +269,7 @@ DEPENDENCIES
   omniauth-twitter
   puma (~> 3.7)
   rails (~> 5.1.6, >= 5.1.6.1)
+  recaptcha
   rspec-rails (~> 3.8)
   sassc
   selenium-webdriver
