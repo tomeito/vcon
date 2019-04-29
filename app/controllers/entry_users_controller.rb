@@ -1,4 +1,5 @@
 class EntryUsersController < ApplicationController
+
   def index
     @entry_users = EntryUser.all
   end

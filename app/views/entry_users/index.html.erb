@@ -1,0 +1,58 @@
+<head>
+  <meta name="viewport" content="width=980">
+</head>
+<body>
+  <div class="container">
+    <h1>バーチャルミスコンテストエントリー一覧</h1>
+    <div id="candidates">
+      <% @entry_users.each do |entry_user| %>
+        <div class="profile-thumbnail" data-candidate="<%= entry_user.id %>">
+            <%= image_tag entry_user.top_image %>
+            <p class="name"><%= entry_user.name %></p>
+        </div>
+      <% end %>
+    </div>
+    <% @entry_users.each do |entry_user| %>
+      <div class="overlay <%= entry_user.id %>" style="display: none">
+        <div class="window <%= "#{entry_user.id}" %>">
+          <div class="upper">
+            <div class="main-image-container"><%= image_tag entry_user.top_image %></div>
+            <div class="name_and_profile">
+              <div class="name"><span class="nameText"><%= entry_user.name %></span><span class="nameBg"></span></div>
+              <div class="profile"><%= entry_user.description %></div>
+            </div>
+          </div>
+          <div class="photos">
+            <% entry_user.other_images.each do |image| %>
+              <%= image_tag image %>
+            <% end %>
+          </div>
+          <div class="links">
+            <%= link_to entry_user.youtube_channel do %>
+              <div class="link-button youtube">Youtube</div>
+            <% end %>
+            <%= link_to entry_user.twitter_url do %>
+              <div class="link-button twitter">Twitter</div>
+            <% end %>
+            <% if entry_user.other_url %>
+              <%= link_to entry_user.other_url do %>
+                <div class="link-button other">その他</div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="vote">
+            <% if logged_in? %>
+              <%= link_to votes_path(vote: {vote_user_id: current_user.id, entry_user_id: entry_user.id}), data:{confirm:"#{entry_user.name}に投票しますか？"} do %>
+                <div class="vote-button">投票する！（一日一回）</div>
+              <% end %>
+            <% else %>
+              <%= link_to "#" do %>
+                <div class="login-button">ログインして投票する！（一日一回）</div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</body>

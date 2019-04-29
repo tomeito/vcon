@@ -10,18 +10,18 @@
 
   <body>
     <header>
-      <%= if logged_in? %>
+      <% if logged_in? %>
         <%= link_to 'logout', '/signout' %>
-      <%= else %>
+      <% else %>
         <%= link_to 'Twitter Login', 'auth/twitter' %>
-      <%= end %>
+      <% end %>
     </header>
 
-    <%= if flash[:notice] %>
+    <% if flash[:notice] %>
       <div class="notice">
         <%= flash[:notice] %>
       </div>
-    <%= end %>
+    <% end %>
 
     <%= yield %>
   </body>
