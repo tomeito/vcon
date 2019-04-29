@@ -1,11 +1,11 @@
 # バーチャルミス・ミスターコンテスト
 
 ## コマンド
-* Google スプレットシートからcsvファイルをダウンロード
+* Google スプレットシートからcsvファイルをダウンロードおよび更新
 ```bash
 $ bundle exec rails drive:answer_load
 ```
-※csvから画像、エントリー者情報を読み込むのはseedで可能です
+※csvからエントリー者情報を読み込むのはseedで可能です
 
 ## Dockerのセットアップ
 ```bash
