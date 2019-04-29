@@ -38,7 +38,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(2,1fr);
     grid-column-gap: 10%;
-    grid-row-gap: 5%;
+    grid-row-gap: 10vh;
     margin: 8%;
 }
 
@@ -165,14 +165,14 @@ h1 {
 
 .name_and_profile .name .nameBg{
     top: 0.3em;
-    left: -0.3em;
+    left: -1.4em;
     content: '';
     display: block;
     position: absolute;
     width: 90%;
     height: 100%;
     background-color: #E40067;
-    transform: rotateZ(-3.8deg);
+    transform: rotateZ(-1.5deg);
     z-index: -1;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -189,7 +189,7 @@ h1 {
 .name_and_profile .profile::before{
     position: absolute;
     content: '';
-    top: -10%;
+    top: -13%;
     left: -5%;
     width: 110%;
     height: 120%;
@@ -204,7 +204,7 @@ h1 {
     width: 95%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .photos img{
@@ -215,22 +215,93 @@ h1 {
 .links{
     margin: 0;
     padding: 0;
-    height: 25%;
+    height: 10%;
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .links a{
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0;
     padding: 0;
-    height: 100%;
+    text-decoration: none;
 }
 
-.links a img{
-    max-height: 100%;
+.link-button {
+    display: flex;
+    justify-content: center;
+    width: 7em;
+    height: 1.5em;
+    font-size: 150%;
+    border-radius: 5px;
+    background-color: #36B4C7;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 black,
+    -1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.link-button.twitter{
+    background-color: #1da1f2;
+}
+
+.link-button.youtube{
+    background-color: #ff0000;
+}
+
+.link-button.other{
+    background-color: #C4CA00;
+}
+
+.vote{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.vote a{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    width: 80%;
+}
+
+.vote-button {
+    background-color: #36B4C7;
+    width: 100%;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 130%;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 black,
+    -1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
+}
+
+.login-button {
+    background-color: #36B4C7;
+    width: 100%;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 130%;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 black,
+    -1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
 }
 
 @media screen and (max-width:980px){
@@ -242,7 +313,6 @@ h1 {
     #candidates {
         grid-template-columns: 1fr;
         grid-column-gap: 0;
-        grid-row-gap: 10%;
         margin: 10%;
     }
 
@@ -254,17 +324,37 @@ h1 {
         height:  90%;
     }
 
-    /*.name_and_profile .name::before {*/
-    /*    top: 0.3em;*/
-    /*    left: -0.3em;*/
-    /*    content: '';*/
-    /*    display: block;*/
-    /*    position: absolute;*/
-    /*    width: 130%;*/
-    /*    height: 80%;*/
-    /*    background-color: #E40067;*/
-    /*    transform: rotateZ(-4deg);*/
-    /*    z-index: -1;*/
-    /*    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);*/
-    /*}*/
+    .name_and_profile .profile {
+        position: relative;
+        width: 80%;
+        height: 60%;
+        font-size: 100%;
+        margin-bottom: 1em;
+        z-index: 100;
+    }
+
+    .name_and_profile .name .nameText{
+        font-size: 150%;
+    }
+
+    .name_and_profile .profile {
+        width: 80%;
+        height: 40%;
+        font-size: 100%;
+        margin-bottom: 1em;
+    }
+
+    .name_and_profile .profile::before{
+        position: absolute;
+        content: '';
+        top: -10%;
+        left: -5%;
+        width: 110%;
+        height: 120%;
+        background-color: white;
+        z-index: -1;
+        transform: rotateZ(1.5deg);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
 }

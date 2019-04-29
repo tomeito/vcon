@@ -1,38 +1,54 @@
+<head>
+  <meta name="viewport" content="width=980">
+</head>
 <body>
   <div class="container">
     <h1>バーチャルミスコンテストエントリー一覧</h1>
     <div id="candidates">
-      <% @entry_users.each do |entryUser| %>
-        <div class="profile-thumbnail" data-candidate="<%= entryUser.id %>">
-            <%= image_tag entryUser.images[0] %>
-            <p class="name"><%= entryUser.name %></p>
+      <% @entry_users.each do |entry_user| %>
+        <div class="profile-thumbnail" data-candidate="<%= entry_user.id %>">
+            <%= image_tag entry_user.top_image %>
+            <p class="name"><%= entry_user.name %></p>
         </div>
       <% end %>
     </div>
-    <% @entry_users.each do |entryUser| %>
-      <div class="overlay <%= entryUser.id %>" style="display: none">
-        <div class="window <%= "#{entryUser.id}" %>">
+    <% @entry_users.each do |entry_user| %>
+      <div class="overlay <%= entry_user.id %>" style="display: none">
+        <div class="window <%= "#{entry_user.id}" %>">
           <div class="upper">
-            <div class="main-image-container"><%= image_tag entryUser.top_image %></div>
+            <div class="main-image-container"><%= image_tag entry_user.top_image %></div>
             <div class="name_and_profile">
-              <div class="name"><span class="nameText"><%= entryUser.name %></span><span class="nameBg"></span></div>
-              <div class="profile"><%= entryUser.description %></div>
+              <div class="name"><span class="nameText"><%= entry_user.name %></span><span class="nameBg"></span></div>
+              <div class="profile"><%= entry_user.description %></div>
             </div>
           </div>
           <div class="photos">
-            <% entryUser.other_images.each do |image| %>
+            <% entry_user.other_images.each do |image| %>
               <%= image_tag image %>
             <% end %>
           </div>
           <div class="links">
-            <%= link_to entryUser.youtube_channel do %>
-              <%#= image_path "youtube_link_path" %>
+            <%= link_to entry_user.youtube_channel do %>
+              <div class="link-button youtube">Youtube</div>
             <% end %>
-            <%= link_to entryUser.twitter_url do %>
-              <%#= image_path "twitter_link_path" %>
+            <%= link_to entry_user.twitter_url do %>
+              <div class="link-button twitter">Twitter</div>
             <% end %>
-            <%= link_to entryUser.other_url do %>
-              <%#= image_path "other_link_path" %>
+            <% if entry_user.other_url %>
+              <%= link_to entry_user.other_url do %>
+                <div class="link-button other">その他</div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="vote">
+            <% if logged_in? %>
+              <%= link_to votes_path(vote: {vote_user_id: current_user.id, entry_user_id: entry_user.id}), data:{confirm:"#{entry_user.name}に投票しますか？"} do %>
+                <div class="vote-button">投票する！（一日一回）</div>
+              <% end %>
+            <% else %>
+              <%= link_to "#" do %>
+                <div class="login-button">ログインして投票する！（一日一回）</div>
+              <% end %>
             <% end %>
           </div>
         </div>
