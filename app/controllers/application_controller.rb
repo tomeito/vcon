@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: 'ログインしてください'
   end
 
+  def already_vote_today?(vote_user)
+    return true if Vote.where(vote_user_id: vote_user.id,
+                              created_at: Time.now.midnight..
+                                  (Time.now.midnight + 1.day))
+
+    false
+  end
+
   private
 
   def logged_in?
