@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :entry_users, only: [:index, :show]
+  get '/mr', to: 'entry_users#index'
+  get '/ms', to: 'entry_users#index'
   resource :votes, only: :create
   resource :sessions, only: [:create, :destroy]
 
