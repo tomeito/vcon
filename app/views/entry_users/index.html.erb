@@ -3,7 +3,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>バーチャルミスコンテストエントリー一覧</h1>
+    <h1><%= @contest_title %>エントリー一覧</h1>
     <div id="candidates">
       <% @entry_users.each do |entry_user| %>
         <div class="profile-thumbnail" data-candidate="<%= entry_user.id %>">
