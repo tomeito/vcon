@@ -7,7 +7,9 @@
     <div id="candidates">
       <% @entry_users.each do |entry_user| %>
         <div class="profile-thumbnail" data-candidate="<%= entry_user.id %>">
+          <% if File.exist?("#{Rails.root}/app/assets/images/#{entry_user.name}")%>
             <%= image_tag entry_user.top_image %>
+          <% end %>
             <p class="name"><%= entry_user.name %></p>
         </div>
       <% end %>
@@ -16,15 +18,21 @@
       <div class="overlay <%= entry_user.id %>" style="display: none">
         <div class="window <%= "#{entry_user.id}" %>">
           <div class="upper">
-            <div class="main-image-container"><%= image_tag entry_user.top_image %></div>
+            <div class="main-image-container">
+              <% if File.exist?("#{Rails.root}/app/assets/images/#{entry_user.name}")%>
+                <%= image_tag entry_user.top_image %>
+              <% end %>
+            </div>
             <div class="name_and_profile">
               <div class="name"><span class="nameText"><%= entry_user.name %></span><span class="nameBg"></span></div>
               <div class="profile"><%= entry_user.description %></div>
             </div>
           </div>
           <div class="photos">
-            <% entry_user.other_images.each do |image| %>
-              <%= image_tag image %>
+            <% if File.exist?("#{Rails.root}/app/assets/images/#{entry_user.name}")%>
+              <% entry_user.other_images.each do |image| %>
+                <%= image_tag image %>
+              <% end %>
             <% end %>
           </div>
           <div class="links">
