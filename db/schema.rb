@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190331073143) do
+ActiveRecord::Schema.define(version: 20190429140207) do
 
   create_table "entry_users", force: :cascade do |t|
     t.string "name"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20190331073143) do
   end
 
   create_table "vote_users", force: :cascade do |t|
-    t.integer "uid"
+    t.string "uid"
     t.string "name"
     t.string "image_url"
     t.datetime "voted_at"
