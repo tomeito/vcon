@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20190430055912) do
   end
 
   create_table "vote_users", force: :cascade do |t|
-    t.integer "uid"
+    t.string "uid"
     t.string "name"
     t.string "image_url"
     t.datetime "voted_at"

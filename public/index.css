@@ -1,0 +1,43 @@
+html {
+    width:100%;
+}
+
+* {
+    font-family: 'Rounded Mplus 1c';
+}
+
+#main {
+    background-color: #3A3839;
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#header {
+    border-bottom: 1px solid #FFF;
+}
+
+#footer {
+    border-top: 1px solid #FFF;
+}
+
+.contents{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3em;
+    padding-bottom: 200px;
+    width:70%;
+    height: auto;
+}
+
+.contents a{
+    margin: 50px;
+}

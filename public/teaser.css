@@ -1,0 +1,185 @@
+html {
+    width:100%;
+}
+
+* {
+    font-family: 'Rounded Mplus 1c';
+}
+
+#main {
+    background-color: #3A3839;
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+h1 {
+    font-size: 200%;
+}
+div h2{
+    color: #E40067;
+}
+
+#header {
+    border-bottom: 1px solid #FFF;
+}
+
+#footer {
+    border-top: 1px solid #FFF;
+}
+
+.contents{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0 3em;
+    padding-bottom: 200px;
+    width:70%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+h1{
+    margin-top: 60px;
+    align-self: center;
+    position: relative;
+}
+
+.twitter-share-button {
+    position: absolute !important;
+    right: -3em;
+    top: -1.3em;
+    width: 148px !important;
+    height: 40px !important;
+}
+
+.text_with_bee {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.bee_img {
+    width: 50%;
+    align-self: center;
+    margin: 0 30px;
+}
+
+#bee {
+    width: 100%;
+}
+
+.text_with_peta {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.peta_img {
+    width: 50%;
+    align-self: center;
+}
+
+#peta {
+    width: 100%;
+}
+
+.prize ul li:has(ul) {
+    list-style: none;
+}
+
+.prize ul li ul li {
+    list-style-type: "★";
+}
+
+.subscriptions {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.to_form {
+    align-self: center;
+    text-decoration: none;
+    color: white;
+    margin-top: 70px;
+    margin-bottom: 130px;
+}
+
+.form_button {
+    width:11em;
+    height:2.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3A3839;
+    font-size: 24px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.form_button:hover {
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.5);
+}
+
+.student .form_button {
+    background-color: #36B4C7;
+}
+
+.general .form_button {
+    background-color: #E40067;
+}
+
+#iris {
+    position: absolute;
+    width:300px;
+    height: auto;
+    bottom: -30px;
+    left: 48px;
+}
+
+#tsubaki {
+    position: absolute;
+    width:400px;
+    height: auto;
+    bottom: -250px;
+    right: 0;
+}
+
+@media screen and (max-width: 980px){
+
+    .contents{
+        width: 96%;
+        padding: 0 2%;
+        padding-bottom: 0;
+    }
+
+    .subscriptions {
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .to_form {
+        align-self: center;
+        text-decoration: none;
+        color: white;
+        margin-top: 70px;
+        margin-bottom: 200px;
+    }
+
+    #header{
+        min-width: 0 !important;
+    }
+
+    #footer{
+        min-width: 0 !important;
+    }
+
+}
