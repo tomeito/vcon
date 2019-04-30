@@ -14,11 +14,11 @@ services:
       TWITTER_API_KEY: 'BrcLC7MU3aLflkl7kAByMWxrc'
       TWITTER_API_SECRET: 'J0MuCnIS9snaE0sCPRlmfrKdAr2OJI91YtpRLOpGiKnZQnr7CP'
       WEBHOOK_URL: 'https://hooks.slack.com/services/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'
-    command: rails s -p 3001 -b 0.0.0.0
+    command: rails s -p 3000 -b 0.0.0.0
     volumes:
       - .:/vcon
     ports:
-      - "3001:3001"
+      - "3000:3000"
     links:
       - vcon-db
     depends_on:
