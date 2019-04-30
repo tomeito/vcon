@@ -11,7 +11,16 @@ class ApplicationController < ActionController::Base
 
   def authenticate
     return if logged_in?
-    redirect_to root_path, alert: 'ログインしてください'
+    redirect_to '/', alert: '投票するにはログインが必要です。ログインしてください'
+  end
+
+  def already_vote_today?(vote_user, is_mr)
+    return true if Vote.find_by(vote_user_id: vote_user.id,
+                                created_at: Time.now.midnight..
+                                  (Time.now.midnight + 1.day),
+                                is_Mr: is_mr)
+
+    false
   end
 
   private

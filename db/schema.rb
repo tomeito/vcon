@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190429140207) do
+ActiveRecord::Schema.define(version: 20190430055912) do
 
   create_table "entry_users", force: :cascade do |t|
     t.string "name"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20190429140207) do
     t.integer "entry_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_Mr"
     t.index ["entry_user_id"], name: "index_votes_on_entry_user_id"
     t.index ["vote_user_id"], name: "index_votes_on_vote_user_id"
   end
