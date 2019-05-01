@@ -1,6 +1,7 @@
 class VotesController < ApplicationController
 
   def create
+    redirect_to '/' and return if request.get?
 
     @vote_user ||= VoteUser.find(params[:vote][:vote_user_id])
     @entry_user ||= EntryUser.find(params[:vote][:entry_user_id])
@@ -24,14 +25,15 @@ class VotesController < ApplicationController
   end
 
   def confirm
+    redirect_back(fallback_location: '/') and return if request.get?
     @vote_user ||= VoteUser.find(params[:vote][:vote_user_id])
     @entry_user ||= EntryUser.find(params[:vote][:entry_user_id])
     if logged_in?
       @vote = Vote.new(vote_params)
-      redirect_back(fallback_location: "/") if @vote.invalid?
+      redirect_back(fallback_location: '/') if @vote.invalid?
     else
       flash[:notice] = '投票するにはログインが必要です。'
-      redirect_back(fallback_location: "/")
+      redirect_back(fallback_location: '/')
     end
   end
 
