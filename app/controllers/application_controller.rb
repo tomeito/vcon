@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
-    return if logged_in?
+    return true if logged_in?
     redirect_to '/', alert: '投票するにはログインが必要です。ログインしてください'
   end
 
