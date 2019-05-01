@@ -4,5 +4,4 @@ Rails.application.routes.draw do
   get '/signout', to: 'sessions#destroy'
   get 'auth/twitter/callback', to: 'sessions#create'
   post 'votes/confirm', to: 'votes#confirm'
-  resource :votes, only: :create
 end

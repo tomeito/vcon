@@ -15,10 +15,9 @@ class ApplicationController < ActionController::Base
   end
 
   def already_vote_today?(vote_user, is_mr)
-    return true
-    if Vote.where(vote_user_id: vote_user.id,
+    return true if Vote.where(vote_user_id: vote_user.id,
                                 created_at: Date.today.all_day,
-                                is_Mr: is_mr)
+                                is_Mr: is_mr).blank?
 
     false
   end
