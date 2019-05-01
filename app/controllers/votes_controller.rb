@@ -3,7 +3,7 @@ class VotesController < ApplicationController
   def create
     redirect_to '/' and return if request.get?
 
-    @vote_user ||= VoteUser.find(params[:vote][:vote_user_id])
+    @vote_user ||= VoteUser.find_by(uid: params[:vote][:vote_user_uid])
     @entry_user ||= EntryUser.find(params[:vote][:entry_user_id])
 
     if params[:back]
@@ -11,7 +11,7 @@ class VotesController < ApplicationController
     else
       vote = Vote.new(vote_params)
       if authenticate && verify_recaptcha(model: vote)
-        if already_vote_today?(@vote_user, @entry_user.is_Mr)
+        if already_vote_today?(@entry_user.is_Mr)
           flash[:notice] = '本日はすでに投票済みです。明日も投票をよろしくお願いいたします！'
           redirect_entry_user_index and return
         end
@@ -51,7 +51,7 @@ class VotesController < ApplicationController
 
   private
   def vote_params
-    params.require(:vote).permit(:entry_user_id, :vote_user_id, :is_Mr)
+    params.require(:vote).permit(:entry_user_id, :vote_user_id, :is_Mr, :vote_user_uid)
   end
 
   def redirect_entry_user_index

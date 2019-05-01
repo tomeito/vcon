@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190430055912) do
+ActiveRecord::Schema.define(version: 20190501183955) do
 
-  create_table "entry_users", force: :cascade do |t|
+  create_table "entry_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string "name"
     t.string "description"
     t.text "comments"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20190430055912) do
     t.boolean "is_Mr", default: false, null: false
   end
 
-  create_table "images", force: :cascade do |t|
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string "url"
     t.integer "entry_user_id"
     t.datetime "created_at", null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20190430055912) do
     t.index ["entry_user_id"], name: "index_images_on_entry_user_id"
   end
 
-  create_table "vote_users", force: :cascade do |t|
+  create_table "vote_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string "uid"
     t.string "name"
     t.string "image_url"
@@ -42,12 +42,13 @@ ActiveRecord::Schema.define(version: 20190430055912) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "votes", force: :cascade do |t|
+  create_table "votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.integer "vote_user_id"
     t.integer "entry_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_Mr"
+    t.string "vote_user_uid"
     t.index ["entry_user_id"], name: "index_votes_on_entry_user_id"
     t.index ["vote_user_id"], name: "index_votes_on_vote_user_id"
   end
