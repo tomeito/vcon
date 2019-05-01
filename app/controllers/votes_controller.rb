@@ -19,7 +19,7 @@ class VotesController < ApplicationController
         Vote.create(vote_params)
       else
         flash.now[:notice] = 'reCAPTCHAを行ってください。'
-        render 'confirm'
+        render 'votes/confirm'
       end
     end
   end

@@ -52,7 +52,7 @@
                 <%= f.submit "投票する！(一日一回)", class: "vote-button" %>
               <% end %>
             <% else %>
-              <%= link_to "#" do %>
+              <%= link_to "/auth/twitter" do %>
                 <div class="login-button">ログインして投票する！（一日一回）</div>
               <% end %>
             <% end %>
