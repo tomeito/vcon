@@ -6,15 +6,15 @@ class VotesController < ApplicationController
 
     if params[:back]
       if @entry_user.is_Mr
-        redirect_to "/mr"
+        redirect_to '/mr'
       else
-        redirect_to "/ms"
+        redirect_to '/ms'
       end
     else
       if verify_recaptcha(model: @vote)
         if already_vote_today?(@vote_user, @entry_user.is_Mr)
           flash[:notice] = '本日はすでに投票済みです。明日も投票をよろしくお願いいたします！'
-          redirect_back(fallback_location: "/")
+          redirect_back(fallback_location: '/') and return
         end
         Vote.create(vote_params)
       else
@@ -38,7 +38,7 @@ class VotesController < ApplicationController
 
   private
   def vote_params
-    params.require(:vote).permit(:entry_user_id, :vote_user_id)
+    params.require(:vote).permit(:entry_user_id, :vote_user_id, :is_Mr)
   end
 
 end

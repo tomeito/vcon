@@ -15,10 +15,10 @@ class ApplicationController < ActionController::Base
   end
 
   def already_vote_today?(vote_user, is_mr)
-    return true if Vote.find_by(vote_user_id: vote_user.id,
-                                created_at: Time.now.midnight..
-                                  (Time.now.midnight + 1.day),
-                                is_Mr: is_mr)
+    return true
+    # if Vote.where(vote_user_id: vote_user.id,
+    #                             created_at: Date.today.all_day,
+    #                             is_Mr: is_mr)
 
     false
   end
