@@ -1,25 +1,24 @@
 class VotesController < ApplicationController
 
   def create
+
     @vote_user ||= VoteUser.find(params[:vote][:vote_user_id])
     @entry_user ||= EntryUser.find(params[:vote][:entry_user_id])
 
     if params[:back]
-      if @entry_user.is_Mr
-        redirect_to '/mr'
-      else
-        redirect_to '/ms'
-      end
+      redirect_entry_user_index
     else
-      if verify_recaptcha(model: @vote)
+      vote = Vote.new(vote_params)
+      if authenticate && verify_recaptcha(model: vote)
         if already_vote_today?(@vote_user, @entry_user.is_Mr)
           flash[:notice] = '本日はすでに投票済みです。明日も投票をよろしくお願いいたします！'
-          redirect_back(fallback_location: '/') and return
+          redirect_entry_user_index and return
         end
-        Vote.create(vote_params)
+        vote.save
       else
         flash.now[:notice] = 'reCAPTCHAを行ってください。'
-        render action: 'confirm'
+        @vote = vote
+        render 'votes/confirm'
       end
     end
   end
@@ -41,4 +40,11 @@ class VotesController < ApplicationController
     params.require(:vote).permit(:entry_user_id, :vote_user_id, :is_Mr)
   end
 
+  def redirect_entry_user_index
+    if @entry_user.is_Mr
+      redirect_to '/mr'
+    else
+      redirect_to '/ms'
+    end
+  end
 end

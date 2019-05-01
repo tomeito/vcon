@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get '/mr', to: 'entry_users#index'
   get '/ms', to: 'entry_users#index'
   get '/signout', to: 'sessions#destroy'
-  get 'auth/twitter/callback' => 'sessions#create'
+  get 'auth/twitter/callback', to: 'sessions#create'
   resource :votes, only: [:create] do
     post 'confirm'
   end
