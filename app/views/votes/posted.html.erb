@@ -1,0 +1,10 @@
+<div class="contents">
+  <div class="posted">
+    <%= image_tag @entry_user.top_image, class: "confirm-photo"%>
+    <br>
+    <p><%= @entry_user.name %>に投票しました！</p>
+    <div class="links">
+      <%= link_to "参加者一覧に戻る", (@vote.is_Mr ? "/mr" : "/ms") %>
+    </div>
+  </div>
+</div>
