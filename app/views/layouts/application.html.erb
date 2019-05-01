@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Vcon</title>
+    <title>バーチャルミス・ミスターコンテスト | おもちゃLABO</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,9 +11,9 @@
   <body>
     <header>
       <% if logged_in? %>
-        <%= link_to 'logout', '/signout' %>
+        <%= link_to 'ログアウト', '/signout' %>
       <% else %>
-        <%= link_to 'Twitter Login', 'auth/twitter' %>
+        <%= link_to 'Twitterでログイン', 'auth/twitter' %>
       <% end %>
     </header>
 
