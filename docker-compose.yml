@@ -11,9 +11,11 @@ services:
       TZ: Asia/Tokyo
       RAILS_ENV: development
       DATABASE_URL: 'mysql2://root:toy_labo_vcon_2019@vcon-db:3306'
-      TWITTER_API_KEY: 'BrcLC7MU3aLflkl7kAByMWxrc'
-      TWITTER_API_SECRET: 'J0MuCnIS9snaE0sCPRlmfrKdAr2OJI91YtpRLOpGiKnZQnr7CP'
-      WEBHOOK_URL: 'https://hooks.slack.com/services/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'
+      TWITTER_API_KEY: "mMYWz7APXf1z3Eg9ikkiNXmQW"
+      TWITTER_API_SECRET: "2M2Q1vRLNj4iiDjsPeOFGdaWevuJqcw995bqZFbiT6Ji3WGLN7"
+      WEBHOOK_URL: "https://hooks.slack.com/services/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"
+      RECAPTCHA_SITE_KEY: "6Lc-g6AUAAAAAGR2Iviy6LINUgAu47I7Q1qLnpxc"
+      RECAPTCHA_SECRET_KEY: "6Lc-g6AUAAAAAJ0MF_Ro1zWBH_IDdNrFUThaP22l"
     command: rails s -p 3000 -b 0.0.0.0
     volumes:
       - .:/vcon
