@@ -8,6 +8,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width:100%;
 }
 
 form {
@@ -18,7 +19,7 @@ form {
     background-color: white;
     border-radius: 10px;
     width: 70%;
-    height: 60%;
+    padding-top: 4em;
 }
 .actions {
     width: 80%;
