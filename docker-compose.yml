@@ -16,11 +16,12 @@ services:
       WEBHOOK_URL: "https://hooks.slack.com/services/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"
       RECAPTCHA_SITE_KEY: "6Lc-g6AUAAAAAGR2Iviy6LINUgAu47I7Q1qLnpxc"
       RECAPTCHA_SECRET_KEY: "6Lc-g6AUAAAAAJ0MF_Ro1zWBH_IDdNrFUThaP22l"
-    command: rails s -p 80 -b 0.0.0.0
+      SECRET_KEY_BASE: '6e1b7b3d0ffa1f4c53fe12ea9d45c42f3f86b53a0e8cc030b1b57234ca96cc00bab15292cef9cc23131f93791156fef59c675df13b9f58109e2e958635c23fb5'
+    command: rails s -p 3000 -b 0.0.0.0
     volumes:
       - .:/vcon
     ports:
-      - "80:80"
+      - "3000:80"
     links:
       - vcon-db
     depends_on:
