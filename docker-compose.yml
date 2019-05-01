@@ -9,7 +9,7 @@ services:
         - APP_HOME=/vcon
     environment:
       TZ: Asia/Tokyo
-      RAILS_ENV: development
+      RAILS_ENV: production
       DATABASE_URL: 'mysql2://root:toy_labo_vcon_2019@vcon-db:3306'
       TWITTER_API_KEY: "mMYWz7APXf1z3Eg9ikkiNXmQW"
       TWITTER_API_SECRET: "2M2Q1vRLNj4iiDjsPeOFGdaWevuJqcw995bqZFbiT6Ji3WGLN7"
@@ -20,7 +20,7 @@ services:
     volumes:
       - .:/vcon
     ports:
-      - "3000:3000"
+      - "80:3000"
     links:
       - vcon-db
     depends_on:
