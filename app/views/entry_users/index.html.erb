@@ -46,8 +46,10 @@
           </div>
           <div class="vote">
             <% if logged_in? %>
-              <%= link_to votes_path(vote: {vote_user_id: current_user.id, entry_user_id: entry_user.id}), data:{confirm:"#{entry_user.name}に投票しますか？"} do %>
-                <div class="vote-button">投票する！（一日一回）</div>
+              <%= form_with model: Vote, local: true, url: {controller: :votes, action: 'confirm'} do |f| %>
+                <%= f.hidden_field :entry_user_id, value: entry_user.id %>
+                <%= f.hidden_field :vote_user_id, value: current_user.id %>
+                <%= f.submit "投票する！(一日一回)", class: "vote-button" %>
               <% end %>
             <% else %>
               <%= link_to "#" do %>
