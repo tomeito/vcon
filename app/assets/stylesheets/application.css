@@ -14,6 +14,28 @@
  *= require_self
  */
 
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: calc(100% - 2em);
+    height: 2em;
+    font-size: 200%;
+    border-bottom: 1px solid white;
+    padding-right: 2em;
+    margin-bottom: 3em;
+}
+
+header a{
+    height: 1.5em;
+    padding: 0 1em;
+    border: 1px solid white;
+    background-color: gray;
+    border-radius: 3px;
+    text-decoration: none;
+    color: white;
+}
+
 body {
     display: flex;
     flex-direction: column;
