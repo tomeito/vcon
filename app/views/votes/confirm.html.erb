@@ -13,5 +13,6 @@
     <%= f.hidden_field :entry_user_id, value: @entry_user.id %>
     <%= f.hidden_field :vote_user_id, value: @vote_user.id %>
     <%= f.hidden_field :is_Mr, value: @entry_user.is_Mr %>
+    <%= f.hidden_field :vote_user_uid, value: session[:user_id] %>
   <% end %>
 </div>
