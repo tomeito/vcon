@@ -14,7 +14,8 @@ class VotesController < ApplicationController
           flash[:notice] = '本日はすでに投票済みです。明日も投票をよろしくお願いいたします！'
           redirect_entry_user_index and return
         end
-        vote.save
+        @vote = vote if vote.save
+        render 'votes/posted'
       else
         flash.now[:notice] = 'reCAPTCHAを行ってください。'
         @vote = vote
@@ -32,6 +33,17 @@ class VotesController < ApplicationController
     else
       flash[:notice] = '投票するにはログインが必要です。'
       redirect_back(fallback_location: "/")
+    end
+  end
+
+  def posted
+    redirect_to '/' and return if request.get?
+    if @vote
+      @vote_user = @vote.vote_user
+      @entry_user = @vote.entry_user
+    else
+      flash[:notice] = "不正な操作が行われました"
+      redirect_to "/"
     end
   end
 
