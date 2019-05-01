@@ -1,8 +1,8 @@
 class VotesController < ApplicationController
 
   def create
-    @vote_user = VoteUser.find(params[:vote][:vote_user_id])
-    @entry_user = EntryUser.find(params[:vote][:entry_user_id])
+    @vote_user ||= VoteUser.find(params[:vote][:vote_user_id])
+    @entry_user ||= EntryUser.find(params[:vote][:entry_user_id])
 
     if params[:back]
       if @entry_user.is_Mr
@@ -19,14 +19,14 @@ class VotesController < ApplicationController
         Vote.create(vote_params)
       else
         flash.now[:notice] = 'reCAPTCHAを行ってください。'
-        render 'votes/confirm'
+        render action: 'confirm'
       end
     end
   end
 
   def confirm
-    @vote_user = VoteUser.find(params[:vote][:vote_user_id])
-    @entry_user = EntryUser.find(params[:vote][:entry_user_id])
+    @vote_user ||= VoteUser.find(params[:vote][:vote_user_id])
+    @entry_user ||= EntryUser.find(params[:vote][:entry_user_id])
     if logged_in?
       @vote = Vote.new(vote_params)
       redirect_back(fallback_location: "/") if @vote.invalid?
