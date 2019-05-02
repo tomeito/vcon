@@ -54,6 +54,7 @@ h1 {
 .profile-thumbnail img{
     width: 98%;
     max-height: 100%;
+    object-fit: contain;
 }
 .profile-thumbnail p{
     position: absolute;
@@ -129,6 +130,7 @@ h1 {
     width:100%;
     height: auto;
     max-height: 100%;
+    object-fit: contain;
 }
 
 .window .upper .name_and_profile{
