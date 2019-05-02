@@ -6,7 +6,7 @@
     <h1><%= @contest_title %>エントリー一覧</h1>
     <div id="candidates">
       <% @entry_users.each do |entry_user| %>
-        <div class="profile-thumbnail" data-candidate="<%= entry_user.id %>">
+        <div id="<%= entry_user.id %>" class="profile-thumbnail" data-candidate="<%= entry_user.id %>">
             <%= image_tag entry_user.top_image if picture_dir_exist?(entry_user) %>
             <p class="name"><%= entry_user.name %></p>
         </div>
