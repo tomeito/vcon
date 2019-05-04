@@ -45,7 +45,7 @@
             <% end %>
           </div>
           <div class="vote">
-            <% if logged_in? %>
+            <% if logged_in? && current_user %>
               <%= form_with model: Vote, local: true, url: {controller: :votes, action: 'confirm'} do |f| %>
                 <%= f.hidden_field :entry_user_id, value: entry_user.id %>
                 <%= f.hidden_field :vote_user_id, value: current_user.id %>
