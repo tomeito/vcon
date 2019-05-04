@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'shared?:id', to: 'shared#index'
   get '/mr', to: 'entry_users#index'
   get '/ms', to: 'entry_users#index'
   get '/signout', to: 'sessions#destroy'

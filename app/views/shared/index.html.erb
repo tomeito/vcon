@@ -1,0 +1,26 @@
+<head>
+  <title>バーチャルミス・ミスターコンテスト | おもちゃLABO</title>
+  <link rel="stylesheet" href="./default.css">
+  <meta name="keywords" content="おもちゃLABO,おもちゃラボ,VTuber,3Dモデル,専修大学">
+  <meta name="description" content="2019年5月より、バーチャルミス・ミスターコンテストを開催します。参加者募集中！">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="<%= @entry_user.name %> | バーチャルミス・ミスターコンテスト" />
+  <meta property="og:url" content="http://virtual-con.toylabo.tech/" />
+  <meta property="og:image" content="<%= ogp_url %>" />
+  <meta property="og:site_name" content="バーチャルミス・ミスターコンテスト" />
+  <meta property="og:description" content="2019年5月より、バーチャルミス・ミスターコンテストを開催します。参加者募集中！" />
+  <meta property="fb:app_id" content="2223149394638612" />
+  <meta name="twitter:site" content="@toy_labo" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image:src" content="<%= ogp_url %>" />
+  <meta name=”robots” content=”noindex,follow” />
+</head>
+<body>
+  <div class="contents">
+    <% if @entry_user %>
+      <h1><%= @entry_user.name %>に投票しました！</h1>
+      <%= image_tag @entry_user.top_image, class: "posted-photo" %>
+    <% end %>
+    <%= link_to "バーチャルミス・ミスターコンテストトップへ" , "/"  %>
+  </div>
+</body>
