@@ -1,0 +1,542 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+html,body{
+    width: 100%;
+    min-width: 650px;
+    background-color: #3A3839;
+    margin: 0;
+    padding: 0;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+}
+.container {
+    width: 100%;
+    min-width: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 0;
+    padding: 10px 0;
+}
+h1 {
+    font-size: 300%;
+    color: white;
+    text-shadow:
+            black 2px 0px,  black -2px 0px,
+            black 0px -2px, black 0px 2px,
+            black 2px 2px , black -2px 2px,
+            black 2px -2px, black -2px -2px,
+            black 1px 2px,  black -1px 2px,
+            black 1px -2px, black -1px -2px,
+            black 2px 1px,  black -2px 1px,
+            black 2px -1px, black -2px -1px;
+}
+#candidates {
+    width:80%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-column-gap: 10%;
+    grid-row-gap: 10vh;
+    margin: 8%;
+}
+
+.profile-thumbnail {
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10% 3%;
+    position: relative;
+}
+.profile-thumbnail img{
+    width: 98%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.profile-thumbnail p{
+    position: absolute;
+    bottom: 2em;
+    font-weight: bold;
+    font-size: 250%;
+    color: white;
+    text-shadow:
+            black 2px 0px,  black -2px 0px,
+            black 0px -2px, black 0px 2px,
+            black 2px 2px , black -2px 2px,
+            black 2px -2px, black -2px -2px,
+            black 1px 2px,  black -1px 2px,
+            black 1px -2px, black -1px -2px,
+            black 2px 1px,  black -2px 1px,
+            black 2px -1px, black -2px -1px;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    min-width: 650px;
+    height:100%;
+    display: none;
+    background: rgba(0,0,0,0.6);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.window{
+    width: 68%;
+    max-width: 800px;
+    height: 88%;
+    background: #E8E8E8;
+    border-radius: 10px;
+    padding: 1%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.window::before{
+    display: block;
+    position: absolute;
+    right: 0.7em;
+    top: 1em;
+    content: "★★★";
+    color: #E40067;
+    -webkit-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    letter-spacing: 0.5em;
+}
+.window .upper{
+    height:40%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.window .upper .main-image-container{
+    height: 100%;
+    width: 30%;
+}
+
+.window .upper .main-image-container img{
+    width:100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.window .upper .name_and_profile{
+    height: 100%;
+    width:60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.name_and_profile .name .nameText{
+    color: white;
+    z-index: 700;
+    font-size: 220%;
+    font-weight: bold;
+    text-shadow:
+            black 2px 0px,  black -2px 0px,
+            black 0px -2px, black 0px 2px,
+            black 2px 2px , black -2px 2px,
+            black 2px -2px, black -2px -2px,
+            black 1px 2px,  black -1px 2px,
+            black 1px -2px, black -1px -2px,
+            black 2px 1px,  black -2px 1px,
+            black 2px -1px, black -2px -1px;
+}
+
+.name_and_profile .name{
+    position: relative;
+    width: 100%;
+    z-index: 200;
+    content: '';
+}
+
+.name_and_profile .name .nameBg{
+    top: 0.3em;
+    left: -1.4em;
+    content: '';
+    display: block;
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    background-color: #E40067;
+    transform: rotateZ(-1.5deg);
+    z-index: -1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.name_and_profile .profile {
+    position: relative;
+    width: 80%;
+    height: 60%;
+    font-size: 140%;
+    margin-bottom: 1em;
+    z-index: 100;
+}
+
+.name_and_profile .profile::before{
+    position: absolute;
+    content: '';
+    top: -13%;
+    left: -5%;
+    width: 110%;
+    height: 120%;
+    background-color: white;
+    z-index: -1;
+    transform: rotateZ(1.5deg);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.photos{
+    height: 25%;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.photos img{
+    height:100%;
+    width:auto;
+}
+
+.links{
+    margin: 0;
+    padding: 0;
+    height: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.links a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+.link-button {
+    display: flex;
+    justify-content: center;
+    width: 7em;
+    height: 1.5em;
+    font-size: 150%;
+    border-radius: 5px;
+    background-color: #36B4C7;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 black,
+    -1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.link-button.twitter{
+    background-color: #1da1f2;
+}
+
+.link-button.youtube{
+    background-color: #ff0000;
+}
+
+.link-button.other{
+    background-color: #C4CA00;
+}
+
+.vote{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.vote a{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    width: 80%;
+}
+
+input{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+}
+
+.vote-button {
+    color: white;
+    background-color: #36B4C7;
+    width: 100%;
+    height: 3em;
+    margin: 0;
+    padding: 0 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 230%;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 black,
+    -1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
+}
+
+.login-button {
+    background-color: #36B4C7;
+    width: 100%;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 130%;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 black,
+    -1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
+}
+
+@media screen and (max-width:980px){
+
+    h1{
+        font-size: 200%;
+    }
+
+    #candidates {
+        grid-template-columns: 1fr;
+        grid-column-gap: 0;
+        margin: 10%;
+    }
+
+    .window{
+        width: 78%;
+        height: 100vmin;
+    }
+
+    .window .upper{
+        height: 30%;
+    }
+
+    .links a{
+        height:  90%;
+    }
+
+    .photos img{
+        width: auto;
+        height: auto;
+        max-width: 32%;
+        max-height: 100%;
+        align-self: center;
+    }
+
+    .name_and_profile .profile {
+        position: relative;
+        width: 80%;
+        height: 60%;
+        font-size: 100%;
+        margin-bottom: 1em;
+        z-index: 100;
+    }
+
+    .name_and_profile .name .nameText{
+        font-size: 150%;
+    }
+
+    .name_and_profile .profile::before{
+         width: 120%;
+    }
+
+}
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+
+.contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    width: 70%;
+    padding-top: 4em;
+}
+.actions {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+}
+
+input {
+    color: white;
+    background-color: #36B4C7;
+    width: 100%;
+    height: 2em;
+    margin: 2em;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 230%;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 black,
+    -1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
+}
+
+.confirm-photo{
+    width: auto;
+    max-width: 50%;
+    max-height: 60%;
+}
+p{
+    font-size: 150%;
+}
+
+.posted {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    width: 70%;
+    height: 60%;
+}
+
+.posted .links {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.posted .links a{
+    text-decoration: none;
+    color: white;
+    background-color: #36B4C7;
+    width: 100%;
+    height: 2em;
+    margin: 2em;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 230%;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 black,
+    -1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: calc(100% - 2em);
+    height: 2em;
+    font-size: 200%;
+    border-bottom: 1px solid white;
+    padding-right: 2em;
+    margin-bottom: 3em;
+}
+
+header a{
+    height: 1.5em;
+    padding: 0 1em;
+    border: 1px solid white;
+    background-color: gray;
+    border-radius: 3px;
+    text-decoration: none;
+    color: white;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.notice{
+    width: 80%;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #C4CA00;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+}
