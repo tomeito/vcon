@@ -9,7 +9,7 @@ $ bundle exec rails drive:answer_load
 
 ## Dockerのセットアップ
 ```bash
-$ 
+$ docker-compose build
 $ docker-compose run vcon-web bundle exec rails drive:answer_load db:setup
 $ docker-compose up
 ```
