@@ -49,7 +49,8 @@
               <%= form_with model: Vote, local: true, url: {controller: :votes, action: 'confirm'} do |f| %>
                 <%= f.hidden_field :entry_user_id, value: entry_user.id %>
                 <%= f.hidden_field :vote_user_id, value: current_user.id %>
-                <%= f.submit "投票する！(一日一回)", class: "vote-button" %>
+                <label for="vote<%=  entry_user.id %>" class="vote-button clickable">投票する！(一日一回)</label>
+                <%= f.submit "投票する！(一日一回)", class: "d-none", id:"vote#{entry_user.id}" %>
               <% end %>
             <% else %>
               <%= link_to "/auth/twitter" do %>

@@ -4,11 +4,13 @@
     <br>
     <p><%= @entry_user.name %>に投票します</p>
     <div class="actions">
-      <%= f.submit '参加者一覧に戻る', name: 'back' %>
+      <label for="back" class="button">参加者一覧に戻る</label>
+      <%= f.submit '参加者一覧に戻る', name: 'back', id:"back", class:"d-none" %>
     </div>
     <%= recaptcha_tags %>
     <div class="actions">
-      <%= f.submit '投票する' %>
+      <label for="vote" class="button">投票する</label>
+      <%= f.submit '投票する', id:"vote", class:"d-none" %>
     </div>
     <%= f.hidden_field :entry_user_id, value: @entry_user.id %>
     <%= f.hidden_field :vote_user_id, value: @vote_user.id %>
