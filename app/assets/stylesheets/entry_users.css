@@ -318,6 +318,18 @@ input{
     -1px -1px 0 black;
 }
 
+.window form {
+    background-color: transparent;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
 @media screen and (max-width:980px){
 
     h1{
