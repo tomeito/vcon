@@ -21,7 +21,7 @@ services:
     volumes:
       - .:/vcon
     ports:
-      - "80:3000"
+      - "3000:3000"
     links:
       - vcon-db
     depends_on:
@@ -35,3 +35,20 @@ services:
       MYSQL_ROOT_PASSWORD: toy_labo_vcon_2019
     ports:
       - "3307:3306"
+
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    environment:
+      STAGE: 'local'
+#      STAGE: 'production'
+#      DOMAINS: 'virtual-con.toylabo.tech -> http://vcon-web:3000'
+      DOMAINS: '127.0.0.1 -> http://vcon-web:3000'
+    volumes:
+      - 'ssl-certs:/var/lib/https-portal'
+
+volumes:
+  ssl-certs:
