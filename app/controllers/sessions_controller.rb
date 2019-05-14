@@ -13,6 +13,6 @@ class SessionsController < ApplicationController
   end
 
   def failure
-    redirect_to root_url, alert: "Authentication failed."
+    redirect_to '/'
   end
 end
