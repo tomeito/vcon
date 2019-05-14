@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     post 'posted'
   end
 
-  match '/auth/failure', to: 'sessions#failure'
+  get '/auth/failure', to: 'sessions#failure'
 end
