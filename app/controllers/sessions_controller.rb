@@ -11,4 +11,8 @@ class SessionsController < ApplicationController
     flash[:notice] = 'ログアウトしました。'
     redirect_back(fallback_location: '/')
   end
+
+  def failure
+    redirect_to root_url, alert: "Authentication failed."
+  end
 end
