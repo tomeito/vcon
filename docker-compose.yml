@@ -46,7 +46,7 @@ services:
 #      STAGE: 'local'
       STAGE: 'production'
       DOMAINS: 'virtual-con.toylabo.tech -> http://vcon-web:3000'
-      DOMAINS: '127.0.0.1 -> http://vcon-web:3000'
+#      DOMAINS: '127.0.0.1 -> http://vcon-web:3000'
     volumes:
       - 'ssl-certs:/var/lib/https-portal'
 
