@@ -51,11 +51,13 @@ form {
     cursor: pointer;
 }
 
-.confirm-photo{
+img.confirm-photo{
     width: auto;
-    max-width: 50%;
-    max-height: 60%;
+    margin-top: 2em;
+    max-width: 80%;
+    max-height: 80%;
 }
+
 p{
     font-size: 150%;
 }
@@ -74,6 +76,7 @@ p{
 .posted .links {
     width: 80%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -84,7 +87,7 @@ p{
     background-color: #36B4C7;
     width: 100%;
     height: 2em;
-    margin: 2em;
+    margin: 0.7em;
     padding: 0;
     display: flex;
     justify-content: center;
@@ -95,4 +98,8 @@ p{
     -1px 1px 0 black,
     1px -1px 0 black,
     -1px -1px 0 black;
+}
+
+.posted .links a.to_ms{
+    background-color: #B40067;
 }
