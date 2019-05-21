@@ -21,3 +21,4 @@ let onready = function() {
 
 $(document).ready(onready);
 $(document).on("page:load", onready);
+$(document).on("turbolinks:load", onready);

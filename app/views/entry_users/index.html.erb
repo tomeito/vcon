@@ -3,6 +3,7 @@
 </head>
 <body>
   <div class="container">
+    <div class="to_right"><%= other_side_link(@is_Mr) %></div>
     <h1><%= @contest_title %>エントリー一覧</h1>
     <div id="candidates">
       <% @entry_users.each do |entry_user| %>
