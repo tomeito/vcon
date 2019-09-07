@@ -22,11 +22,10 @@
       <%= link_to '/', class:"to_top" do %>
         <%= image_tag 'logo.png' %>
       <% end %>
-
       <% if logged_in? %>
         <%= link_to 'ログアウト', '/signout', class:"login"%>
       <% else %>
-        <%= link_to 'Twitterでログイン', 'auth/twitter', class:"logout" %>
+        <%= link_to 'Twitterでログイン', 'auth/twitter', class:"logout" if false %>
       <% end %>
     </header>
 
