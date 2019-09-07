@@ -26,6 +26,9 @@ class VotesController < ApplicationController
   end
 
   def confirm
+    if true
+      redirect_to request.referer
+    end
     redirect_back(fallback_location: '/') and return if request.get?
     @vote_user ||= VoteUser.find(params[:vote][:vote_user_id])
     @entry_user ||= EntryUser.find(params[:vote][:entry_user_id])
