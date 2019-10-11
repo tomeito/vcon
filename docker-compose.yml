@@ -9,13 +9,14 @@ services:
         - APP_HOME=/vcon
     environment:
       TZ: Asia/Tokyo
-      RAILS_ENV: development
+      RAILS_ENV: production
       DATABASE_URL: 'mysql2://root:toy_labo_vcon_2019@vcon-db:3306'
       TWITTER_API_KEY: "mMYWz7APXf1z3Eg9ikkiNXmQW"
       TWITTER_API_SECRET: "2M2Q1vRLNj4iiDjsPeOFGdaWevuJqcw995bqZFbiT6Ji3WGLN7"
       WEBHOOK_URL: "https://hooks.slack.com/services/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"
       RECAPTCHA_SITE_KEY: "6Lc-g6AUAAAAAGR2Iviy6LINUgAu47I7Q1qLnpxc"
       RECAPTCHA_SECRET_KEY: "6Lc-g6AUAAAAAJ0MF_Ro1zWBH_IDdNrFUThaP22l"
+      SECRET_KEY_BASE: '6e1b7b3d0ffa1f4c53fe12ea9d45c42f3f86b53a0e8cc030b1b57234ca96cc00bab15292cef9cc23131f93791156fef59c675df13b9f58109e2e958635c23fb5'
     command: rails s -p 3000 -b 0.0.0.0
     volumes:
       - .:/vcon
@@ -34,3 +35,20 @@ services:
       MYSQL_ROOT_PASSWORD: toy_labo_vcon_2019
     ports:
       - "3307:3306"
+
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    environment:
+#      STAGE: 'local'
+      STAGE: 'production'
+      DOMAINS: 'virtual-con.toylabo.tech -> http://vcon-web:3000'
+#      DOMAINS: '127.0.0.1 -> http://vcon-web:3000'
+    volumes:
+      - 'ssl-certs:/var/lib/https-portal'
+
+volumes:
+  ssl-certs:

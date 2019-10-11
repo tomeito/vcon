@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     get 'posted'
     post 'posted'
   end
+
+  get '/auth/failure', to: 'sessions#failure'
 end

@@ -3,10 +3,11 @@
 </head>
 <body>
   <div class="container">
+    <div class="to_right"><%= other_side_link(@is_Mr) %></div>
     <h1><%= @contest_title %>エントリー一覧</h1>
     <div id="candidates">
       <% @entry_users.each do |entry_user| %>
-        <div class="profile-thumbnail" data-candidate="<%= entry_user.id %>">
+        <div id="<%= entry_user.id %>" class="profile-thumbnail" data-candidate="<%= entry_user.id %>">
             <%= image_tag entry_user.top_image if picture_dir_exist?(entry_user) %>
             <p class="name"><%= entry_user.name %></p>
         </div>
@@ -33,7 +34,7 @@
           </div>
           <div class="links">
             <%= link_to entry_user.youtube_channel do %>
-              <div class="link-button youtube">Youtube</div>
+              <div class="link-button youtube">YouTube</div>
             <% end %>
             <%= link_to entry_user.twitter_url do %>
               <div class="link-button twitter">Twitter</div>
@@ -44,18 +45,24 @@
               <% end %>
             <% end %>
           </div>
+          <% if false %>
+            <div class="vote">
+              <% if logged_in? && current_user %>
+                <%= form_with model: Vote, local: true, url: {controller: :votes, action: 'confirm'} do |f| %>
+                  <%= f.hidden_field :entry_user_id, value: entry_user.id %>
+                  <%= f.hidden_field :vote_user_id, value: current_user.id %>
+                  <label for="vote<%=  entry_user.id %>" class="vote-button clickable">投票する！(一日一回)</label>
+                  <%= f.submit "投票する！(一日一回)", class: "d-none", id:"vote#{entry_user.id}" %>
+                <% end %>
+              <% else %>
+                <%= link_to "/auth/twitter" do %>
+                  <div class="login-button">ログインして投票する！（一日一回）</div>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
           <div class="vote">
-            <% if logged_in? %>
-              <%= form_with model: Vote, local: true, url: {controller: :votes, action: 'confirm'} do |f| %>
-                <%= f.hidden_field :entry_user_id, value: entry_user.id %>
-                <%= f.hidden_field :vote_user_id, value: current_user.id %>
-                <%= f.submit "投票する！(一日一回)", class: "vote-button" %>
-              <% end %>
-            <% else %>
-              <%= link_to "/auth/twitter" do %>
-                <div class="login-button">ログインして投票する！（一日一回）</div>
-              <% end %>
-            <% end %>
+            <span class="vote-button">投票期間は終了しました。<br>投票ありがとうございました！</span>
           </div>
         </div>
       </div>

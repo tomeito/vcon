@@ -8,6 +8,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width:100%;
 }
 
 form {
@@ -18,7 +19,7 @@ form {
     background-color: white;
     border-radius: 10px;
     width: 70%;
-    height: 60%;
+    padding-top: 4em;
 }
 .actions {
     width: 80%;
@@ -27,16 +28,11 @@ form {
     align-items: center;
 }
 
-input{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    padding: 0;
-    appearance: none;
+.d-none{
+    display: none;
 }
 
-input {
+.button {
     color: white;
     background-color: #36B4C7;
     width: 100%;
@@ -52,13 +48,16 @@ input {
     -1px 1px 0 black,
     1px -1px 0 black,
     -1px -1px 0 black;
+    cursor: pointer;
 }
 
-.confirm-photo{
+img.confirm-photo{
     width: auto;
-    max-width: 50%;
-    max-height: 60%;
+    margin-top: 2em;
+    max-width: 80%;
+    max-height: 80%;
 }
+
 p{
     font-size: 150%;
 }
@@ -77,6 +76,7 @@ p{
 .posted .links {
     width: 80%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -87,7 +87,7 @@ p{
     background-color: #36B4C7;
     width: 100%;
     height: 2em;
-    margin: 2em;
+    margin: 0.7em;
     padding: 0;
     display: flex;
     justify-content: center;
@@ -98,4 +98,8 @@ p{
     -1px 1px 0 black,
     1px -1px 0 black,
     -1px -1px 0 black;
+}
+
+.posted .links a.to_ms{
+    background-color: #B40067;
 }
